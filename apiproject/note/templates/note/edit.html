@@ -1,0 +1,92 @@
+{% extends 'temp/main.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>update</title>
+    <style>
+        .content{
+            max-width: 700px;
+            margin: auto;
+            box-shadow: 0px 0px 10px 0px rgb(68, 62, 62);
+            border-radius: 10px;
+            height:100%;
+           
+        }
+        .box-element{
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0px 0px 10px 2px grey;
+        }
+        .enter{
+            width: 80%;
+            height: 50px;
+            border: 0;
+            border-bottom: 2px solid gray;
+            font-size: 25px;
+            background: transparent;
+            outline: none;
+        
+        }
+        ::placeholder{
+            font-size: 25px;
+            text-transform: none;
+
+        }
+        .button{
+            background-color: white;
+            border-radius:30px;
+            width: 120px;
+            padding: 12px;
+            border: 0;
+            margin-bottom: 35px;
+        }
+        .button:hover{
+            background-color: hsl(261deg 80% 48%);
+            letter-spacing: 3px;
+            color:white;
+            box-shadow:rgb(93 24 220) 0px 7px 29px 0px;
+
+        }
+        .button:active{
+            transform: translateY(10px);
+            transition: 100ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <center>
+            <form action="" method="post">
+                {% csrf_token %}
+                <br>
+                <h2 style="color: red;">EDIT NOTE</h2>
+                <br>
+                <div>
+                    <input style="text-transform: uppercase;" class="enter" type="text" name="title" value="{{x.title}}"  placeholder="Enter Title">
+                    <br>
+                    <br>
+                    <textarea <input class="enter" type="text" name="content" value="{{x.note}}" placeholder="Enter Note"></textarea>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <input class="button" type="submit" value="UPDATE">
+                </div>
+            </form>
+        </center>
+
+    </div>
+</body>
+</html>
+
+
+
+
+{% endblock %}

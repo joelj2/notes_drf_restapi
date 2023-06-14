@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .navbar-brand{
+            color: red;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            
+        }
+        body{
+            background-image: url("{% static 'images/white.png' %}");
+            background-size: cover;
+            padding: 5px;
+        }
+        .container-fluid{
+            background-color:transparent;
+           
+        }
+    .login{
+      font-size: 18px;
+      position: relative;
+      left: 80px;
+      background-color:transparent;
+      border:2px solid grey;
+      font-weight: bold;
+      padding: 2px;
+    }
+    .login:hover{
+      background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 35%, rgba(0,212,255,1) 100%);
+      color: white;
+      border: 0;
+    }
+    .link{
+      font-weight: bold;
+      font-size:18px;
+      letter-spacing:0.5px;
+      list-style-type: none;
+      
+    }
+    .link:hover{
+      border-bottom: 2px solid goldenrod;
+    }
+    img{
+      margin: -8px;
+      margin-left:8px;    
+      width: 40px;
+      box-shadow: 0px 0px 8px 2px grey;
+      background:none;
+    }
+    .center{
+      display: flex;
+      justify-content: space-between;
+      padding-left:450px;
+    }
+    .search{
+      margin-left:105px;
+      margin-top: -5px;
+      width:300px;
+      border: 0;
+      outline: none;
+      padding-bottom: 30px;  
+    }
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'create' %}"><img src="{% static 'images/note.png' %}" alt="">NOTE</a>
+          </div>
+         <div class="center">
+          <ul class="nav navbar-nav ">
+            <li><a class="link" href="{% url 'create' %}">Create Note</a></li>
+            <li><a class="link" href="{% url 'view' %}">View Note</a></li>
+            <li><div class="search">
+            </div></li>
+            <li><a class="login" href="{% url 'login' %}">Login</a></li>
+
+          </ul>
+         </div>
+        </div>
+      </nav>
+      
+
+
+
+
+
+
+
+
+    <div class="container">
+{% block content %}
+
+{% endblock %}
+    </div>
+
+</body>
+</html>

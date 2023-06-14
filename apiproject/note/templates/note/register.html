@@ -1,0 +1,107 @@
+{% extends 'temp/main.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .content{
+            display: flex;
+            width: 900px;
+            height:80vh;
+            margin: auto;
+            background-color: white;
+            border: 1px solid grey;
+        }
+        .image{
+            padding-top: 10px;
+            width:40rem;
+            height: fit-content;
+            box-shadow: none;
+        }
+        .form{
+            margin:30px;
+
+        }
+        ::placeholder{
+            font-size: 12px;
+        }
+        input{
+            width:24rem;
+            height:30px;
+            transition: width 0.5s;
+        }
+        input:focus{
+            box-shadow: 0px 0px 10px 2px orange ;
+            width:32rem ;
+        }
+        button{
+            width:24rem;
+            height:30px;
+            background-color:orange;
+            border:0;
+            border-radius:5px; 
+        }
+        button:hover{
+            background-color: orangered;
+            color: white;
+            letter-spacing: 1px;
+            box-shadow: 0px 0px 10px 2px orangered; 
+        }
+        button:active{
+            transform: translateY(10px);
+            transition: 200ms;
+        }
+        .click{
+            font-weight: bold;
+            font-size: 20px;
+            text-decoration:none
+        }
+        .click:hover{
+            text-decoration: none;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+          <img class="image" src="{% static 'images/register.jpg' %}" alt="">
+          <div class="form">
+             <strong style="font-size:32px;">Create Account</strong>
+             <hr>
+             <form action="" method="POST">
+                {% csrf_token %}
+                <h5><strong>Your Name</strong></h5>
+                <input type="text" name="name" placeholder="First and last name" required="">
+                <h5><strong>Email Address</strong></h5>
+                <input type="email" name="email" placeholder="Email address" required="@">
+                <h5><strong>Mobile Number</strong></h5>
+                <input type="text" name="mobile" placeholder="Mobile number" required="" maxlength="10">
+                <h5><strong>Password</strong></h5>
+                <input type="password" name="password" placeholder="At least 4 characters" required="" minlength="4">
+                <br><br>
+                <button>CREATE</button>
+                <br><br>
+                Already have an Account ? <a class="click" href="{% url 'login' %}">Login Here</a>
+                <br><br>
+                {% if messages %}
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+                {% endif %}
+             </form>
+          </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+{% endblock %}

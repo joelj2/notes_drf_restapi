@@ -1,0 +1,119 @@
+{% extends 'temp/main.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .content{
+            display: flex;
+            width: 900px;
+            height:70vh;
+            margin: auto;
+            background-color: white;
+            
+            
+        }
+        .image{
+            padding-top: 10px;
+            width: 45rem;
+            box-shadow: none;
+            height: fit-content;
+        }
+        .form{
+            margin: 20px;
+        }
+        input{
+            
+            margin-left:20px;
+            margin-right: 20px;
+            border: 0;
+            border-bottom: 2px solid grey;
+            width: 320px;
+            outline: none;
+            font-size: 20px;
+            padding-top:3px;
+        }
+        input:focus{
+            transition:all 1s;
+            border-bottom: 2px solid black;
+        }
+        button{
+            margin-left:20px;
+            margin-right: 20px;
+            background-color: grey;
+            color: white;
+            border: 0;
+            padding:auto;
+            width:320px;
+            height:40px;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color:lightseagreen;
+            border: 1px solid grey;
+            letter-spacing:2px;
+        }
+        button:active{
+            transform:translateY(10px);
+            transition: 100ms;
+        }
+        ::placeholder{
+            font-size:20px;
+        }
+        .click{
+
+            font-weight: bold;
+            font-size:18px;
+        }
+        .click:hover{
+            text-decoration: none;
+            color: blueviolet;
+        }
+        .alert{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+          <img class="image" src="{% static 'images/login.jpg' %}" alt="">
+          <div class="form">
+             <strong style="font-size: 30px;margin-left: 20px;">Login</strong>
+             <hr>
+             <br>
+             <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="User Name" required="">
+                <br><br>
+                <input type="password" name="password" placeholder="Password" required="">
+                <br><br>
+                <br><br>
+                <button>LOGIN</button>
+             </form>
+             <br><br>
+             <span style="margin-left:35px;">Don't have an account ? </span><a class="click" href="{% url 'register' %}">Create Account</a>
+             <br><br>
+             {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="{% url 'login' %}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>{{message}}</strong>
+                  </div>
+                {% endfor %}
+                {% endif %}
+          </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+{% endblock %}

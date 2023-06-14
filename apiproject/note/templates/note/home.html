@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        .navbar-brand{
+            color: red;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            
+        }
+        body{
+            background-image: url("{% static 'images/white.png' %}");
+            background-size: cover;
+            padding: 5px;
+        }
+        .container-fluid{
+            background-color:transparent;
+           
+        }
+    .logout{
+      font-size: 18px;
+      position: relative;
+      left:72px;
+      background-color:transparent;
+      border:2px solid grey;
+      font-weight: bold;
+      padding: 2px;
+    }
+    .logout:hover{
+      background: rgb(2,0,36);
+      background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(121,9,105,1) 35%, rgba(0,212,255,1) 100%);
+      color: white;
+      border: 0;
+    }
+    .link{
+      font-weight: bold;
+      font-size:18px;
+      letter-spacing:0.5px;
+      list-style-type: none;
+      
+    }
+    .link:hover{
+      border-bottom: 2px solid goldenrod;
+    }
+    img{
+      margin: -8px;
+      margin-left:8px;    
+      width: 40px;
+      box-shadow: 0px 0px 8px 2px grey;
+      background:none;
+    }
+    .center{
+      display: flex;
+      justify-content: space-between;
+      padding-left:450px;
+    }
+    .search{
+      margin-left:105px;
+      margin-top: -5px;
+      width:300px;
+      border: 0;
+      outline: none;
+      padding-bottom: 30px;  
+    }
+    .content{
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0px 0px 10px 0px rgb(68, 62, 62);
+      border-radius: 10px;
+      height:100%;
+  }
+  .box-element{
+      display: flex;
+      justify-content: space-between;
+      box-shadow: 0px 0px 10px 2px grey;
+  }
+  .enter{
+      width: 80%;
+      height: 50px;
+      border: 0;
+      border-bottom: 2px solid gray;
+      font-size: 25px;
+      background: transparent;
+      outline: none;
+  
+  }
+  ::placeholder{
+      font-size: 25px;
+      text-transform: none;
+
+  }
+  .button{
+      background-color: white;
+      border-radius:30px;
+      width: 120px;
+      padding: 12px;
+      border: 0;
+      margin-bottom:35px;
+  }
+  .button:hover{
+      background-color: hsl(261deg 80% 48%);
+      letter-spacing: 3px;
+      color:white;
+      box-shadow:rgb(93 24 220) 0px 7px 29px 0px;
+
+  }
+  .button:active{
+      transform: translateY(10px);
+      transition: 100ms;
+  }
+  .button1{
+      background-color: white;
+      border-radius:30px;
+      width: 120px;
+      padding: 12px;
+      border: 0;
+  }
+  .button1:hover{
+      background-color: hsl(357, 80%, 48%);
+      letter-spacing: 3px;
+      color:white;
+      box-shadow:rgb(220, 24, 24) 0px 7px 29px 0px;
+  }
+  .button1:active{
+      transform: translateY(10px);
+      transition: 100ms;
+  } 
+  </style>
+</head>
+<body>
+
+    <nav class="navbar navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'create' %}"><img src="{% static 'images/note.png' %}" alt="">NOTE</a>
+          </div>
+         <div class="center">
+          <ul class="nav navbar-nav ">
+            <li><a class="link" href="{% url 'create' %}">Create Note</a></li>
+            <li><a class="link" href="{% url 'view' %}">View Note</a></li>
+            <li><div class="search">
+            </div></li>
+            <li><a class="logout" href="{% url 'create' %}">Logout</a></li>
+
+          </ul>
+         </div>
+        </div>
+      </nav>
+
+      <div class="content">
+        <center>
+            <form action="" method="post">
+                {% csrf_token %}
+                <br>
+                <h2 style="color: red;">CREATE NOTE</h2>
+                <br>
+                <div>
+                    <input style="text-transform: uppercase;" class="enter" type="text" name="title" placeholder="Enter Title" required="">
+                    <br>
+                    <br>
+                    <textarea input class="enter" type="text" name="content" placeholder="Enter Note" required=""></textarea>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <input class="button" type="submit" value="CREATE">&nbsp;&nbsp;&nbsp;
+                    <input class="button1" type="reset" value="RESET">
+                </div>
+            </form>
+            
+        </center>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+{% extends 'temp/main.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>view</title>
+    <style>
+        .content{
+            max-width: 800px;
+            margin: auto;
+            box-shadow: 0px 0px 10px 0px rgb(68, 62, 62);
+            border-radius: 10px;
+            height:100%;
+        }
+        .row{
+            display: flex;
+            margin-left: 6px;
+        }
+        .button{
+            padding: 4px 25px 0px 20px;
+            margin-right: 20px;
+            text-decoration: none;
+            background-color: blue;
+            color: white;
+            text-align: center;
+            max-height: 30px;
+            border-radius: 5px;
+            width:88px;
+        }
+        .button:hover{
+            background-color: hsl(261deg 80% 48%);
+            color: white;
+            outline: none;
+            text-decoration: none;
+            box-shadow:rgb(93 24 220) 0px 7px 29px 0px;
+        }
+        .button1{
+            padding: 4px 25px 0px 20px;
+            margin-right: 20px;
+            text-decoration: none;
+            background-color:red;
+            color: white;
+            text-align: center;
+            max-height: 30px;
+            border-radius: 5px;
+        }
+        .button1:hover{
+            background-color: hsl(357, 80%, 48%);
+            color: white;
+            outline: none;
+            text-decoration: none;
+            box-shadow:rgb(220, 24, 24) 0px 7px 29px 0px;
+        }
+        .button::after{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        
+            <br>
+                <h2 style="color: red;text-align: center;">VIEW NOTES</h2>
+                <hr>
+                <div class="row">
+                    <strong style="flex: 1;font-size: 20px;">TITLE</strong>
+                    <strong style="flex: 2;font-size: 20px;">CONTENT</strong>
+                </div>
+                <hr>
+                {% for i in x %}
+                <div class="row">
+                    <strong style="flex:1;font-size: 20px;">{{i.title}}</strong>
+                    <strong style="flex: 2;font-size: 20px;">{{i.content}}</strong>
+                    <a class="button" href="{% url 'edit' id=i.note_id %}">Edit</a></td>
+                    <a onclick="return confirm('Are you sure you want to delete?');" class="button1" href="{% url 'delete' id=i.note_id %}">delete</a> </td>
+                </div>
+                <hr>
+
+                {% endfor %}
+
+    </div>
+</body>
+</html>
+
+
+
+
+{% endblock %}
